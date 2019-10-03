@@ -10,6 +10,6 @@ function [output] = calculateCarrierPowerDb(Pt, Gt, Gr, f, r)
 %CALCULATECARRIERPOWER All Inputs/Outputs are in DBS
 %    Calculates the Carrier Signal Power i.e the C in C/N
 
-output = Pt + Gt + Gr + calculatePathLoss(f, r) - calculateExtraLossesDb();
+output = 10*log10(Pt) + Gt + Gr + calculatePathLoss(f, r) - calculateExtraLossesDb();
 end
 

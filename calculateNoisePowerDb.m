@@ -1,7 +1,7 @@
 % Input Arguments
 %   tsys - system temp in kelvin (linear)
 %   bandwidth - bandwidth in Hz (linear)
-%   weather - the current weather (weatherConditions enum)
+%   weather - the desired weather (weatherConditions enum)
 % Output Arguments
 %   output - Noise power in dB
 function [output] = calculateNoisePowerDb(tsys, bandwidth, weather)

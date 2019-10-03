@@ -1,11 +1,9 @@
-classdef satelliteSystem
+classdef gsReceiverSystemA
+    % The ground station that receives the signal from the satellite
    properties
         % Phsyical properties of the system
-        R = 40000000; % The distance the satellite is from earth in meters
-        Grant = 20; % The receive antenna directivity in dB
-        Gtant = 30; % The transmit antenna directivity in dB
+        Grant = 60; % The receive antenna directivity in dB
         
-       
         % Properties related to internal components
         Tant = 190; % Temp of antenna in Kelvin
         Tlna = 50; % Temp of LNA in Kelvin

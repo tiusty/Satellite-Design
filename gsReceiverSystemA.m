@@ -22,19 +22,13 @@ classdef gsReceiverSystemA
        end
        
        % Returns the directivity of the system based on the intrinsics of
-       % the antenna
+       % the antenna and the receiving wavelength
+       % Input Arguments
+       %    wavelength - The wavelength that the gs is receiving
        % Output Arguments
        %    output - The directivity in dBi
-       function output = GetSysDirectivity(obj)
-            output = l0*log10((obj.Aef * pi * obj.Dant) / obj.GetTransmitWavelength());
-       end
-       
-       % Gets the wavelength of the system based on the tramsmission
-       % frequnecy
-       % Output Arguments
-       %    output - The wavelength of the signal in meters
-       function output = GetTransmitWavelength(obj)
-           output = (3*10^6)/(obj.f);
+       function output = GetSysDirectivity(obj, wavelength)
+            output = 10*log10((obj.Aef * pi * obj.Dant) / wavelength);
        end
    end
 end

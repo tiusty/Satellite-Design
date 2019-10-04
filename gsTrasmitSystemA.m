@@ -4,7 +4,7 @@ classdef gsTrasmitSystemA
         % Phsyical properties of the system
         Dant = 5; % The diameter of the antenna
         Aef = 89; % The percent efficient of the aperature
-        Pt = 2000; % Power of the transmitted signal in Watts 
+        Pt = 5000; % Power of the transmitted signal in Watts 
         f = 83 * 10^9 % 83 GHZ transmit signal frequency
         bandwidth = 6*10^6; % 6MHz transmit bandwidth
    end
@@ -15,7 +15,7 @@ classdef gsTrasmitSystemA
        % Output Arguments
        %    output - The directivity in dBi
        function output = GetSysDirectivity(obj)
-            output = l0*log10((obj.Aef * pi * obj.Dant) / obj.GetTransmitWavelength());
+            output = 10*log10((obj.Aef * pi * obj.Dant) / obj.GetTransmitWavelength());
        end
        
        % Gets the wavelength of the system based on the tramsmission

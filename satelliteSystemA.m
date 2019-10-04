@@ -36,5 +36,13 @@ classdef satelliteSystemA
            pt = Pr + obj.Glna + obj.Gmixer + obj.Ghpa;
            output = 10^(pt/10); % Convert the output to Watts
        end
+       
+       % Gets the wavelength of the system based on the tramsmission
+       % frequnecy
+       % Output Arguments
+       %    output - The wavelength of the signal in meters
+       function output = GetTransmitWavelength(obj)
+           output = (3*10^6)/(obj.f);
+       end
    end
 end

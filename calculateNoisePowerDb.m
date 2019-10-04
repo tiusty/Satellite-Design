@@ -16,7 +16,7 @@ if (weather == weatherConditions.rain)
     La = constants.Lclearsky + constants.Lrain;
     Tsky = 270*(1-(1/La));
     deltaTsky = Tsky - constants.Tclearsky;
-    Tsrain = Tskyclear + deltaTsky;
+    Tsrain = constants.Tclearsky + deltaTsky;
     deltaN = 10*log10(Tsrain/Tsky);
 end
 

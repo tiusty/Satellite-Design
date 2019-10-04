@@ -11,6 +11,6 @@
 function [output] = calculateSNR(Pt, Gt, Gr, f, b, r, tsys, weather)
 %CALCULATESNR calculates the SNR for the given system
 
-output = calculateCarrierPowerDb(Pt, Gt, Gr, f, r) - calculateNoisePowerDb(tsys, b, weather);
+output = calculateCarrierPowerDb(Pt, Gt, Gr, f, r, weather) - calculateNoisePowerDb(tsys, b, weather);
 end
 

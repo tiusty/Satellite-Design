@@ -2,7 +2,6 @@ classdef satelliteSystemA
    properties
         % Phsyical properties of the system
         R = 40000000; % The distance the satellite is from earth in meters
-        Pt = 1000; % Power transmit of the satellite
         Grant = 50; % The receive antenna directivity in dB
         Gtant = 50; % The transmit antenna directivity in dB
         f = 73*10^9; % The frequency of the transmit signal in hz
@@ -21,8 +20,21 @@ classdef satelliteSystemA
    
    methods
        % Calculates the system temperature of the satellite
+       % Output Arguments
+       %    output - The output system temp in Kelvin
        function output = GetSystemTemp(obj)
            output = obj.Tant + obj.Tlna + obj.Tmixer/(10^(obj.Glna/10)) + obj.Thpa/(10^(obj.Glna/10) + 10^(obj.Gmixer));
+       end
+       
+       % Based on the received power of the satellite, calculates the power transmitted based
+       % on internal componenets
+       % Input Arguments
+       %    Pr - recieved power in dB
+       % Output Arguments
+       %    output - the power transmitted by the sattelite in Watts
+       function output = GetPtFromPrWatts(obj, Pr)
+           pt = Pr + obj.Glna + obj.Gmixer + obj.Ghpa;
+           output = 10^(pt/10); % Convert the output to Watts
        end
    end
 end

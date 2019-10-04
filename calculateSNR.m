@@ -8,9 +8,10 @@
 %   weather - Weather condtions (weatherConditions enum)
 % Output Arguments
 %   output - SNR of the system
-function [output] = calculateSNR(Pt, Gt, Gr, f, b, r, tsys, weather)
+function [output, C, N] = calculateSNR(Pt, Gt, Gr, f, b, r, tsys, weather)
 %CALCULATESNR calculates the SNR for the given system
-
-output = calculateCarrierPowerDb(Pt, Gt, Gr, f, r, weather) - calculateNoisePowerDb(tsys, b, weather);
+C = calculateCarrierPowerDb(Pt, Gt, Gr, f, r, weather);
+N = calculateNoisePowerDb(tsys, b, weather);
+output = C - N;
 end
 

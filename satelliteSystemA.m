@@ -42,7 +42,7 @@ classdef satelliteSystemA
        % Output Arguments
        %    output - The wavelength of the signal in meters
        function output = GetTransmitWavelength(obj)
-           output = (3*10^6)/(obj.f);
+           output = physconst('LightSpeed')/(obj.f);
        end
    end
 end

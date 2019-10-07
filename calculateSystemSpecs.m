@@ -15,5 +15,5 @@ downlinkSNR = calculateSNR(satellite.GetPtFromPrWatts(Cup), satellite.Gtant, gsR
 display(downlinkSNR);
 
 %% Calculate Total SNR
-SNRtot = 1 / ( (1/(10^(uplinkSNR/10))) + (1/(10^(downlinkSNR/10)))); % Make sure to convert SNR to linear
+SNRtot = 1 / ( (1/(10^(uplinkSNR/10))) + (1/(10^(downlinkSNR/10))) ); % Make sure to convert SNR to linear
 display(SNRtot);

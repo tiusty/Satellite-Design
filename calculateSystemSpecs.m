@@ -1,9 +1,13 @@
 %% Choose variables
+% Weather conditions we are testing for
 weather = weatherConditions.clear;
 
+% System designs
 satellite = satelliteSystemA;
 gsTransmiter = gsTrasmitSystemA;
 gsReceiver = gsReceiverSystemA;
+
+% Our objective specs we are designing for
 objectiveSpecs = systemThreshold;
 
 

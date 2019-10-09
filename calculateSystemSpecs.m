@@ -8,6 +8,8 @@ gsTransmiter = gsTrasmitSystemA;
 gsReceiver = gsReceiverSystemA;
 
 % Our objective specs we are designing for
+% thresohld - is the minimum requirments
+% objective - the desired values to design for
 objectiveSpecs = systemThreshold;
 
 

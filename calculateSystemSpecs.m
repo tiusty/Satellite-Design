@@ -9,6 +9,8 @@ gsReceiver = gsReceiverSystemA;
 %% Calculate SNR for uplink
 [uplinkSNR, Cup, Nup] = calculateSNR(gsTransmiter.Pt, gsTransmiter.GetSysDirectivity(), satellite.Grant, gsTransmiter.f, gsTransmiter.bandwidth, satellite.R, satellite.GetSystemTemp(), weather);
 display(uplinkSNR);
+display(Cup);
+display(satellite.GetPtFromPrdB(Cup));
 
 %% Calculate SNR for downlink
 downlinkSNR = calculateSNR(satellite.GetPtFromPrWatts(Cup), satellite.Gtant, gsReceiver.GetSysDirectivity(satellite.GetTransmitWavelength()), satellite.f, satellite.bandwidth, satellite.R, gsReceiver.GetSystemTemp(), weather);

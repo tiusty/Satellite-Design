@@ -6,7 +6,7 @@ classdef constants
         Lrain = 3; % Loss due to rain in dB
         Ledge = 3; % Losses due to edge beam
         Lmisc = 0.4; % Misc losses due to cables etc
-        Lmargin = 36; % Built in clear-day link margin
+        Lmargin = 30; % Built in clear-day link margin
         
         % Intrinsic Constants
         kdb = -228.6; % Boltzmann constant in db

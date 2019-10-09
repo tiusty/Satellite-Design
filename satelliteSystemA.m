@@ -26,15 +26,26 @@ classdef satelliteSystemA
            output = obj.Tant + obj.Tlna + obj.Tmixer/(10^(obj.Glna/10)) + obj.Thpa/(10^(obj.Glna/10) + 10^(obj.Gmixer));
        end
        
+       % Get the system gain based off internal componenets
+       % Output
+       %    output - The system gain in dbs
+       function output = GetSystemGain(obj)
+          output = obj.Glna + obj.Gmixer + obj.Ghpa; 
+       end
+       
        % Based on the received power of the satellite, calculates the power transmitted based
        % on internal componenets
        % Input Arguments
        %    Pr - recieved power in dB
        % Output Arguments
-       %    output - the power transmitted by the sattelite in Watts
+       %    output - the power transmitted by the sattelite in dBs
+       function output = GetPtFromPrdB(obj, Pr)
+           output = Pr + obj.GetSystemGain();
+       end
+       
+       % Same as above but outputs the Pt in Watts
        function output = GetPtFromPrWatts(obj, Pr)
-           pt = Pr + obj.Glna + obj.Gmixer + obj.Ghpa;
-           output = 10^(pt/10); % Convert the output to Watts
+           output = 10^(obj.GetPtFromPrdB(Pr)/10); % Convert the output to Watts
        end
        
        % Gets the wavelength of the system based on the tramsmission

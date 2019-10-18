@@ -17,8 +17,7 @@ costDownlink = 0;
 costTotal = 0;
 
 % Determine all the parameters we can change
-% Determine weights for the parameters (how much we would like to change
-% it)
+
 for n = 1:k
     %% Calculate the Uplink SNR
     [uplinkSNR, Cup, Nup] = calculateSNR(gsTransmiter.Pt.curr, gsTransmiter.Gant.curr, satellite.Grant.curr, gsTransmiter.f, gsTransmiter.bandwidth, satellite.R, satellite.systemTemp.curr, weather, objectiveSpecs);

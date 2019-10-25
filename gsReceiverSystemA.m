@@ -3,7 +3,7 @@ classdef gsReceiverSystemA
    properties
         % Phsyical properties of the system
         Dant = 5; % The diameter of the antenna
-        Aef = 95; % The percent efficient of the aperature
+        Aef = 67; % The percent efficient of the aperature
         
         % Properties related to internal components
         Tant = 30; % Temp of antenna in Kelvin

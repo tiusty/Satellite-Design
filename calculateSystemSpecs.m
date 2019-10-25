@@ -1,6 +1,6 @@
 %% Choose variables
 % Weather conditions we are testing for
-weather = weatherConditions.clear;
+weather = weatherConditions.rain;
 
 % System designs
 satellite = satelliteSystemA;
@@ -10,7 +10,7 @@ gsReceiver = gsReceiverSystemA;
 % Our objective specs we are designing for
 % thresohld - is the minimum requirments
 % objective - the desired values to design for
-objectiveSpecs = systemThreshold;
+objectiveSpecs = systemObjective;
 
 
 %% Calculate SNR for uplink

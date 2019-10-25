@@ -7,6 +7,7 @@ classdef constants
         Ledge = 3; % Losses due to edge beam
         Lmisc = 0.4; % Misc losses due to cables etc
         Lmargin = 30; % Built in clear-day link margin
+        To = 290; % Air temp in Kelvin
         
         % Intrinsic Constants
         kdb = -228.6; % Boltzmann constant in db

@@ -8,29 +8,44 @@ classdef satelliteSystemA
         bandwidth = 6*10^6; % The bandwidth of the transmit signal
         
        
-        % Properties related to internal components
-        Tant = 190; % Temp of antenna in Kelvin
+        % System gains
         Glna = 35; % Gain of the LNA in dB.
-        Tlna = 627.06; % Temp of LNA in Kelvin
-        Gmixer = 0; % Gain of the mixer in dB
-        Tmixer = 627.06; % Temp of the mixer in Kelvin
-        Ghpa = 40; % Gain of high power amplifer in dB
-        Thpa = 298.15; % Temp of hpa in kelvin
+        GpaHigh = 20; % PA gain of 80.5-86.5 GHZ
+        Gdownconv = 10; % Down converter from 81Ghz
+        Gupconv = 35; % Up convert to 71 Ghz
+        GpaLow = 25; % PA gain of 70.5-76.5 Ghz
+        Ghpa = 40; % Gain of high power amplifer in dB              
+        
+        % Properties related to internal components
+        % Properites in Kelin
+        Tant = 190; % Temp of antenna in Kelvin
+        
+        % Properites based off Noise Floor        
+        NFpahigh = 4; % NF of PA 80.5-86.5 GHZ
+        NFdownconv = 5; % NF of down converter
+        NFupconv = 28; % NF of up converter
+        NFlna = 4; % NF of LNA
+        NFhpa = 4; % NF of HPA
+        NFpalow = 4; % NF of PA 70.5-76.5 GHZ  
    end
    
    methods
+       % Calculates the temperature based on the Noise Figure
+       function output = GetTempFromNF(~, nf)
+          output = constants.To*(10^(nf/10) - 1);
+       end
        % Calculates the system temperature of the satellite
        % Output Arguments
        %    output - The output system temp in Kelvin
        function output = GetSystemTemp(obj)
-           output = obj.Tant + obj.Tlna + obj.Tmixer/(10^(obj.Glna/10)) + obj.Thpa/(10^(obj.Glna/10) + 10^(obj.Gmixer));
+           output = obj.Tant + obj.GetTempFromNF(obj.NFlna) + obj.GetTempFromNF(obj.NFpahigh)/10^(obj.Glna/10) + obj.GetTempFromNF(obj.NFdownconv)/10^((obj.Glna + obj.GpaHigh)/10) + obj.GetTempFromNF(obj.NFupconv)/10^((obj.Glna + obj.GpaHigh + obj.Gdownconv)/10) + obj.GetTempFromNF(obj.NFpalow)/10^((obj.Glna + obj.GpaHigh + obj.Gdownconv + obj.Gupconv)/10) + obj.GetTempFromNF(obj.NFhpa)/10^((obj.Glna + obj.GpaHigh + obj.Gdownconv + obj.Gupconv + obj.GpaLow)/10);
        end
        
        % Get the system gain based off internal componenets
        % Output
        %    output - The system gain in dbs
        function output = GetSystemGain(obj)
-          output = obj.Glna + obj.Gmixer + obj.Ghpa; 
+          output = obj.Glna + obj.GpaHigh + obj.Gdownconv + obj.Gupconv + obj.GpaLow + obj.Ghpa; 
        end
        
        % Based on the received power of the satellite, calculates the power transmitted based

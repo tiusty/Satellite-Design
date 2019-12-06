@@ -1,11 +1,11 @@
 classdef satelliteSystemA
    properties
         % Phsyical properties of the system
-        R = 40000000; % The distance the satellite is from earth in meters
+        R = 36000000; % The distance the satellite is from earth in meters
         Grant = 50; % The receive antenna directivity in dB
         Gtant = 50; % The transmit antenna directivity in dB
         f = 73*10^9; % The frequency of the transmit signal in hz
-        bandwidth = 6*10^6; % The bandwidth of the transmit signal
+        bandwidth = 18*10^6; % The bandwidth of the transmit signal
         
        
         % System gains

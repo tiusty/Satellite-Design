@@ -5,7 +5,7 @@
 %   output - Output losses in dB
 function [output] = calculateExtraLossesDb(weather, objectiveSpecs)
 %MISCLOSSES Calculates Misc losses such as due to clear sky, rain sky etc
-% All units in db
+% All units in dbL_{
 
 Lrain = 0; % Loss due to rain conditions
 if (weather == weatherConditions.rain)

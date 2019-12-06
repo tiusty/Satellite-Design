@@ -1,6 +1,6 @@
 %% Choose variables
 % Weather conditions we are testing for
-weather = weatherConditions.rain;
+weather = weatherConditions.clear;
 
 % System designs
 satellite = satelliteSystemA;
@@ -10,7 +10,7 @@ gsReceiver = gsReceiverSystemA;
 % Our objective specs we are designing for
 % thresohld - is the minimum requirments
 % objective - the desired values to design for
-objectiveSpecs = systemObjective;
+objectiveSpecs = systemThreshold;
 
 
 %% Calculate SNR for uplink
@@ -18,7 +18,7 @@ objectiveSpecs = systemObjective;
 display(uplinkSNR);
 
 %% Calculate SNR for downlink
-downlinkSNR = calculateSNR(satellite.GetPtFromPrWatts(Cup), satellite.Gtant, gsReceiver.GetSysDirectivity(satellite.GetTransmitWavelength()), satellite.f, satellite.bandwidth, satellite.R, gsReceiver.GetSystemTemp(), weather, objectiveSpecs);
+downlinkSNR = calculateSNR(satellite.GetPtFromPrWatts(Cup), satellite.Gtant, gsReceiver.GetSysDirectivity(), satellite.f, satellite.bandwidth, satellite.R, gsReceiver.GetSystemTemp(), weather, objectiveSpecs);
 display(downlinkSNR);
 
 %% Calculate Total SNR

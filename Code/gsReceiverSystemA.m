@@ -7,6 +7,7 @@ classdef gsReceiverSystemA
         
         % Properties related to internal components
         Tant = 30; % Temp of antenna in Kelvin
+        Thpa = 4
         Tlna = 110; % Temp of LNA in Kelvin
         Glna = 30; % Gain of the LNA in dB
         Tmixer = 80; % Temp of the mixer in Kelvin
@@ -27,8 +28,13 @@ classdef gsReceiverSystemA
        %    wavelength - The wavelength that the gs is receiving
        % Output Arguments
        %    output - The directivity in dBi
-       function output = GetSysDirectivity(obj, wavelength)
-            output = 10*log10((obj.Aef * pi * obj.Dant) / wavelength);
+       function output = GetSysDirectivity(~)
+            output = 49;
+       end
+       
+              % Calculates the temperature based on the Noise Figure
+       function output = GetTempFromNF(~, nf)
+          output = constants.To*(10^(nf/10) - 1);
        end
    end
 end
